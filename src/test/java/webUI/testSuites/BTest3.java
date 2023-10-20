@@ -27,7 +27,7 @@ public class BTest3 {
     public void createUserAndProject() throws InterruptedException {
 
         loginPage.signUpButton.click();
-        signUpPage.emailTextBox.setText("qqwansa@csa.com");
+        signUpPage.emailTextBox.setText("qqwaansa@csa.com");
         signUpPage.passTextBox.setText("panqueS1to");
         signUpPage.sendButton.click();
 

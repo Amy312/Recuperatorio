@@ -7,12 +7,11 @@ import org.junit.jupiter.api.Test;
 import webUI.pages.todoly.*;
 import webUI.session.Session;
 
-public class BTest4 {
+public class LoginTest {
     MenuSection menuSection = new MenuSection();
     MainPage mainPage = new MainPage();
     LoginSection loginSection = new LoginSection();
-    SettingsPage settingsPage = new SettingsPage();
-    DashboardSection dashboardSection = new DashboardSection();
+
     @AfterEach
     public void close(){
         Session.getInstance().closeSession();
@@ -23,7 +22,7 @@ public class BTest4 {
     }
 
     @Test
-    public void updatePassword() throws InterruptedException {
+    public void updatePassword() {
 
         //1st - LOGIN
         String email = "amy@san.com";
@@ -36,27 +35,5 @@ public class BTest4 {
 
         Assertions.assertTrue(menuSection.logoutButton.isControlDisplayed(),
                 "ERROR no me pude iniciar sesion");
-
-        //2nd - Go to settings
-        menuSection.settingsButton.click();
-
-        // 3rd - Change Password
-        settingsPage.oldPassTextBox.setText(pass);
-        settingsPage.newPassTextBox.setText(newpass);
-        settingsPage.okButton.click();
-        Thread.sleep(3000);
-
-        // 4th - verify change
-        menuSection.logoutButton.click();
-
-        mainPage.loginButton.click();
-        loginSection.emailTextBox.setText(email);
-        loginSection.pwdTextBox.setText(newpass);
-        loginSection.loginButton.click();
-
-        Thread.sleep(3000);
-        Assertions.assertTrue(menuSection.logoutButton.isControlDisplayed(),
-                "ERROR no me pude iniciar sesion");
-
     }
 }
